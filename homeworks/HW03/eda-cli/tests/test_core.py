@@ -62,10 +62,7 @@ def test_correlation_and_top_categories():
     assert len(city_table) <= 2
 
 
-# НОВЫЕ ТЕСТЫ ДЛЯ ЭВРИСТИК КАЧЕСТВА
-
 def test_constant_columns_flag():
-    """Тест на обнаружение константных колонок"""
     df = pd.DataFrame({
         "id": [1, 2, 3, 4],
         "constant_col": [42, 42, 42, 42],  # все значения одинаковые
@@ -83,7 +80,6 @@ def test_constant_columns_flag():
 
 
 def test_high_cardinality_categoricals():
-    """Тест на обнаружение признаков с высокой кардинальностью"""
     # Создаем колонку с высокой кардинальностью (почти все значения уникальны)
     # Преобразуем числа в строки, чтобы колонка была категориальной
     df = pd.DataFrame({
@@ -109,7 +105,6 @@ def test_high_cardinality_categoricals():
 
 
 def test_id_duplicates():
-    """Тест на обнаружение дубликатов в ID-колонках"""
     df = pd.DataFrame({
         "user_id": [1, 2, 3, 1, 2],  # дубликаты
         "customer_id": [100, 101, 102, 103, 104],  # уникальные
@@ -130,7 +125,6 @@ def test_id_duplicates():
 
 
 def test_zero_values():
-    """Тест на обнаружение колонок с большим количеством нулей"""
     df = pd.DataFrame({
         "col_with_zeros": [0, 0, 0, 0, 1, 2, 3],  # 4/7 = 57% нулей
         "col_many_zeros": [0, 0, 0, 0, 0, 0, 1],  # 6/7 = 86% нулей
@@ -151,7 +145,6 @@ def test_zero_values():
 
 
 def test_quality_score_calculation():
-    """Тест на расчет quality_score с новыми эвристиками"""
     df = pd.DataFrame({
         "id": [1, 2, 3, 1, 2],  # дубликаты ID
         "constant": [5, 5, 5, 5, 5],  # константная колонка

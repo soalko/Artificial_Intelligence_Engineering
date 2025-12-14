@@ -32,7 +32,7 @@ uv run eda-cli report data/example.csv --out-dir reports
 
 ## Пример вывода с новыми опциями:
 ```bash
-eda-cli report data/example.csv \
+uv run eda-cli report data/example.csv \
   --out-dir my_report \
   --title "Анализ пользователей" \
   --top-k-categories 10 \

@@ -61,6 +61,9 @@ async def quality_from_json(data: Dict[str, Any]) -> Dict[str, Any]:
     Анализ качества данных из JSON.
     JSON должен быть словарём, который можно преобразовать в DataFrame.
     """
+    import time
+    start_time = time.time()
+
     try:
         df = pd.DataFrame(data)
         summary = summarize_dataset(df)
@@ -69,16 +72,47 @@ async def quality_from_json(data: Dict[str, Any]) -> Dict[str, Any]:
         zero_flags = compute_zero_flags(df, summary)
         flags.update(zero_flags)
 
-        # Добавляем информацию о размерах
-        flags.update({
-            "n_rows": summary.n_rows,
-            "n_cols": summary.n_cols,
-            "columns": [col.name for col in summary.columns],
-        })
+        quality_score = flags.get("quality_score", 0.0)
 
-        return {"flags": flags}
+        ok_for_model = (
+                quality_score >= 0.7 and
+                not flags.get("too_few_rows", False) and
+                not flags.get("too_many_missing", False) and
+                not flags.get("has_constant_columns", False)
+        )
+
+        latency_ms = round((time.time() - start_time) * 1000, 2)
+
+        response = {
+            "ok_for_model": ok_for_model,
+            "quality_score": quality_score,
+            "latency_ms": latency_ms,
+            "flags": {
+                "too_few_rows": flags.get("too_few_rows", False),
+                "too_many_columns": flags.get("too_many_columns", False),
+                "too_many_missing": flags.get("too_many_missing", False),
+                "max_missing_share": flags.get("max_missing_share", 0.0),
+                "has_constant_columns": flags.get("has_constant_columns", False),
+                "has_high_cardinality_categoricals": flags.get("has_high_cardinality_categoricals", False),
+                "has_suspicious_id_duplicates": flags.get("has_suspicious_id_duplicates", False),
+                "has_many_zero_values": flags.get("has_many_zero_values", False),
+            }
+        }
+
+        return response
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        # В случае ошибки также возвращаем структурированный ответ
+        latency_ms = round((time.time() - start_time) * 1000, 2)
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "ok_for_model": False,
+                "quality_score": 0.0,
+                "latency_ms": latency_ms,
+                "error": str(e),
+                "flags": {}
+            }
+        )
 
 
 @app.post("/quality-from-csv")

@@ -1,0 +1,19 @@
+{
+  "model_name": "RandomForest (optimized)",
+  "model_type": "<class 'sklearn.ensemble._forest.RandomForestClassifier'>",
+  "best_params": {},
+  "test_metrics": {
+    "model": "RandomForest (optimized)",
+    "accuracy": 0.97184,
+    "f1": 0.6053811659192825,
+    "roc_auc": 0.9113861817559981,
+    "avg_precision": 0.7598120763470197
+  },
+  "feature_importance_top5": {
+    "f54": 0.029476854219318182,
+    "f53": 0.02143602552149888,
+    "f58": 0.018910458256805696,
+    "f25": 0.014697580324702631,
+    "f47": 0.01359837566545603
+  }
+}

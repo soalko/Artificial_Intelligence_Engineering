@@ -1,0 +1,94 @@
+{
+  "dataset_01": {
+    "KMeans": {
+      "metrics": {
+        "silhouette": 0.5216395622404243,
+        "davies_bouldin": 0.6853295219054456,
+        "calinski_harabasz": 11786.954622671532
+      },
+      "params": {
+        "k": 2
+      }
+    },
+    "DBSCAN": {
+      "metrics": {
+        "silhouette": 0.7410573339510806,
+        "davies_bouldin": 0.2688941810554394,
+        "calinski_harabasz": 1467.9539684099764,
+        "noise_ratio": 0.9914166666666666
+      },
+      "params": {
+        "eps": 0.1,
+        "min_samples": 2
+      }
+    },
+    "best_method": "DBSCAN",
+    "best_metrics": {
+      "silhouette": 0.7410573339510806,
+      "davies_bouldin": 0.2688941810554394,
+      "calinski_harabasz": 1467.9539684099764,
+      "noise_ratio": 0.9914166666666666
+    }
+  },
+  "dataset_02": {
+    "KMeans": {
+      "metrics": {
+        "silhouette": 0.3068610017701601,
+        "davies_bouldin": 1.3234721699867644,
+        "calinski_harabasz": 3573.3933329348392
+      },
+      "params": {
+        "k": 2
+      }
+    },
+    "DBSCAN": {
+      "metrics": {
+        "silhouette": 0.5373832388783659,
+        "davies_bouldin": 0.345093274382899,
+        "calinski_harabasz": 15.515335978514528,
+        "noise_ratio": 0.00025
+      },
+      "params": {
+        "eps": 1.1,
+        "min_samples": 2
+      }
+    },
+    "best_method": "DBSCAN",
+    "best_metrics": {
+      "silhouette": 0.5373832388783659,
+      "davies_bouldin": 0.345093274382899,
+      "calinski_harabasz": 15.515335978514528,
+      "noise_ratio": 0.00025
+    }
+  },
+  "dataset_03": {
+    "KMeans": {
+      "metrics": {
+        "silhouette": 0.31554470037825183,
+        "davies_bouldin": 1.1577256320598661,
+        "calinski_harabasz": 6957.162639510167
+      },
+      "params": {
+        "k": 3
+      }
+    },
+    "DBSCAN": {
+      "metrics": {
+        "silhouette": 0.2624466026604555,
+        "davies_bouldin": 0.799573797121556,
+        "calinski_harabasz": 1414.3179399002906,
+        "noise_ratio": 0.9122666666666667
+      },
+      "params": {
+        "eps": 0.1,
+        "min_samples": 5
+      }
+    },
+    "best_method": "KMeans",
+    "best_metrics": {
+      "silhouette": 0.31554470037825183,
+      "davies_bouldin": 1.1577256320598661,
+      "calinski_harabasz": 6957.162639510167
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "dataset_01": {
+    "method": "DBSCAN",
+    "params": {
+      "eps": 0.1,
+      "min_samples": 2
+    },
+    "silhouette": 0.7410573339510806,
+    "noise_ratio": 0.9914166666666666
+  },
+  "dataset_02": {
+    "method": "DBSCAN",
+    "params": {
+      "eps": 1.1,
+      "min_samples": 2
+    },
+    "silhouette": 0.5373832388783659,
+    "noise_ratio": 0.00025
+  },
+  "dataset_03": {
+    "method": "KMeans",
+    "params": {
+      "k": 3
+    },
+    "silhouette": 0.31554470037825183,
+    "noise_ratio": 0
+  }
+}

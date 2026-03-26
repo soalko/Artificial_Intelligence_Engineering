@@ -1,0 +1,3 @@
+experiment_id,task,dataset,seed,model_summary,optimizer,lr,epochs_trained,best_val_accuracy,test_accuracy,precision,recall,mean_iou,notes
+C1,classification,CIFAR100,42,SimpleCNN,Adam lr=0.001,0.001,20,0.4197,,,,,base transform
+C2,classification,CIFAR100,42,SimpleCNN,Adam lr=0.001,0.001,20,0.3894,,,,,with augmentations

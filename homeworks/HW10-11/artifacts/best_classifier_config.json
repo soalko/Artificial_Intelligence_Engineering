@@ -1,0 +1,12 @@
+{
+    "dataset": "CIFAR100",
+    "architecture": "ResNet18",
+    "transforms": "resize224+normalize_imagenet",
+    "hyperparams": {
+        "lr": 0.001,
+        "optimizer": "Adam",
+        "epochs": 15,
+        "batch_size": 16
+    },
+    "seed": 42
+}

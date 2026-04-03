@@ -1,11 +1,7 @@
 experiment_id,task,dataset,seed,model_summary,optimizer,lr,epochs_trained,best_val_accuracy,test_accuracy,precision,recall,mean_iou,notes
-C1,classification,CIFAR100,42,SimpleCNN,Adam lr=0.001,0.001,20,0.4197,,,,,base transform
-C2,classification,CIFAR100,42,SimpleCNN,Adam lr=0.001,0.001,20,0.3894,,,,,with augmentations
-C1,classification,CIFAR100,42,SimpleCNN,Adam lr=0.001,0.001,15,0.4179,,,,,base transform
-C2,classification,CIFAR100,42,SimpleCNN,Adam lr=0.001,0.001,15,0.4052,,,,,with augmentations
-C3,classification,CIFAR100,42,"ResNet18 (pretrained, head only)",Adam lr=0.001,0.001,15,0.0708,,,,,backbone frozen
-C4,classification,CIFAR100,42,"ResNet18 (pretrained, finetune layer4+fc)",Adam lr=0.001,0.001,15,0.0405,,,,,layer4+fc unfrozen
-C1,classification,CIFAR100,42,SimpleCNN,Adam lr=0.001,0.001,15,0.4152,,,,,base transform
-C2,classification,CIFAR100,42,SimpleCNN,Adam lr=0.001,0.001,15,0.4059,,,,,with augmentations
-V1,segmentation,OxfordIIITPet,42,DeepLabV3_ResNet50_binary,,,0,,,0.17872927738820285,0.8150772629610075,0.15828391935570826,postprocessing: V1
-V2,segmentation,OxfordIIITPet,42,DeepLabV3_ResNet50_binary,,,0,,,0.18096301337797396,0.8149036367734274,0.15829140256303068,postprocessing: V2
+C1,classification,CIFAR100,42,SimpleCNN,Adam,0.001,10,40.81,6.94,,,,No Augmentation
+C2,classification,CIFAR100,42,SimpleCNN,Adam,0.001,10,43.0,8.38,,,,With Augmentation
+C3,classification,CIFAR100,42,ResNet,Adam,0.001,10,25.93,26.21,,,,ResNet18 Frozen Backbone
+C4,classification,CIFAR100,42,ResNet,Adam,0.001,10,41.94,42.32,,,,ResNet18 Fine-tune Layer4
+V1,segmentation,OxfordIIITPet,42,DeepLabV3_ResNet50,N/A,0.0,0,,,,,0.6667,"Base Inference, Foreground class=1"
+V2,segmentation,OxfordIIITPet,42,DeepLabV3_ResNet50,N/A,0.0,0,,,,,0.6667,"Morphological Opening (3x3), Foreground class=1"

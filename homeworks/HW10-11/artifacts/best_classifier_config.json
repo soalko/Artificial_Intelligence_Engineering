@@ -1,12 +1,14 @@
 {
-    "dataset": "CIFAR100",
-    "architecture": "ResNet18",
-    "transforms": "resize224+normalize_imagenet",
-    "hyperparams": {
-        "lr": 0.001,
-        "optimizer": "Adam",
-        "epochs": 15,
-        "batch_size": 16
-    },
-    "seed": 42
+  "exp_id": "C2",
+  "dataset": "CIFAR100",
+  "seed": 42,
+  "model": "SimpleCNN",
+  "lr": 0.001,
+  "epochs": 10,
+  "batch_size": 128,
+  "optimizer": "Adam",
+  "criterion": "CrossEntropyLoss",
+  "train_size": 40000,
+  "val_size": 10000,
+  "transforms": "augmented"
 }

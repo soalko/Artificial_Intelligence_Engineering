@@ -1,0 +1,5 @@
+query,before_retrieved_sources,after_retrieved_sources,changed
+Кто похитил огонь для людей?,"doc_07, doc_15, doc_04","doc_07, doc_15, doc_16",True
+Кто спускался в Аид за женой?,"doc_08, doc_15, doc_04","doc_17, doc_16, doc_08",True
+Кто убил Медузу Горгону?,"doc_10, doc_15, doc_14","doc_18, doc_10, doc_15",True
+Кто такой Зевс?,"doc_15, doc_12, doc_08","doc_17, doc_16, doc_15",True

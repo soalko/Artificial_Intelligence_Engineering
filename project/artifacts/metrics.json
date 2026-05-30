@@ -1,6 +1,6 @@
 {
-  "cv_mae_mean": 0.6083497822284698,
-  "cv_mae_std": 0.18099375346972596,
+  "cv_mae_mean": 19.359005737304688,
+  "cv_mae_std": 1.477964326013003,
   "model_params": {
     "n_estimators": 200,
     "max_depth": 7,

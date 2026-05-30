@@ -112,13 +112,13 @@ python -m src.service.app
 Пример тела запроса:
 
 ```
-{"Store_ID": 1, "Product_ID": 29, "Date": "2019-01-15"}
+{"Store_ID": "S001, "Product_ID": "P0004", "Date": "2019-01-15"}
 ```
 
 Ответ:
 
 ```
-{"predicted_units_sold": 82.4}
+{"predicted_units_sold": 80.78}
 ```
 
 - GET /health – проверка работоспособности.
@@ -128,7 +128,7 @@ python -m src.service.app
 ```
 curl -X POST "http://localhost:8000/predict" \
 -H "Content-Type: application/json" \
--d '{"Store_ID":1,"Product_ID":29,"Date":"2019-01-15"}'
+-d '{"Store_ID":"S001","Product_ID":"P0004","Date":"2019-01-15"}'
 
 ```
 

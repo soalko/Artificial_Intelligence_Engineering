@@ -1,4 +1,3 @@
-"""Загрузка Demand forecasting dataset с Kaggle или локально."""
 import os
 import pandas as pd
 from pathlib import Path
@@ -13,7 +12,6 @@ RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
 TARGET_FILE = RAW_DATA_DIR / "demand_forecasting.csv"
 
 def download_from_kaggle():
-    """Скачивание через kagglehub (не требует аутентификации, если датасет публичный)."""
     try:
         import kagglehub
         path = kagglehub.dataset_download("hosan707/demand-forecasting-dataset")

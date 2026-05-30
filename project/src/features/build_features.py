@@ -112,16 +112,25 @@ def main():
     # Удаляем оригинальные текстовые колонки (они уже закодированы)
     # Оставляем только числовые колонки (int, float)
     numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
-    # Принудительно добавляем дату (она может быть datetime, её удалим позже)
-    # Саму дату и целевой столбец пока оставляем, но в финальном X они будут удалены
     df = df[numeric_cols + ["Date", target]]  # сохраняем только числовые плюс служебные
 
     # Удаляем строки с NA (из-за лагов)
     df = df.dropna().reset_index(drop=True)
 
+    cols_to_drop = [
+        'Units Sold',  # целевая переменная
+        'Units Ordered',  # дублирует продажи
+        'Inventory Level',  # может быть функцией от продаж
+        'Demand',  # почти идентична Units Sold
+        'Units Sold.1'  # возможный артефакт
+    ]
+    # Удаляем только существующие колонки
+    df = df.drop(columns=[c for c in cols_to_drop if c in df.columns], errors='ignore')
+
     # Сохраняем
     feature_path = PROJECT_ROOT / "data/processed/demand_features.csv"
     df.to_csv(feature_path, index=False)
+    print("Колонки перед сохранением:", df.columns.tolist())
     logger.info(f"Признаки сохранены в {feature_path}")
     logger.info(f"Итоговые колонки: {df.columns.tolist()}")
 

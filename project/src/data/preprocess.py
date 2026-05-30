@@ -17,7 +17,6 @@ def load_config():
 
 
 def preprocess(df: pd.DataFrame, config: dict) -> pd.DataFrame:
-    """Чистка данных с учётом реальных названий колонок."""
     date_col = config["data"]["date_col"]
     store_col = config["data"]["store_col"]
     item_col = config["data"]["item_col"]

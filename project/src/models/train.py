@@ -26,8 +26,9 @@ def load_feature_data():
     data_path = PROJECT_ROOT / "data/processed/demand_features.csv"
     df = pd.read_csv(data_path, parse_dates=["Date"])
     target = load_config()["data"]["target_col"]
-    drop_cols = ["Date", target]
+    drop_cols = ["Date", target, "Demand", "Units Ordered", "Inventory Level", "Units Sold.1"]
     X = df.drop(columns=drop_cols, errors="ignore")
+    print("Колонки признаков:", X.columns.tolist())
     y = df[target]
     return X, y
 
@@ -55,6 +56,9 @@ def main():
 
         rmse = np.sqrt(mean_squared_error(y_val, preds))
         logger.info(f"Fold {fold + 1}: RMSE = {rmse:.4f}")
+
+        # print("Пример реальных значений:", y_val[:5].values)
+        # print("Пример предсказаний:     ", preds[:5])
 
     logger.info(f"Средний MAE по CV: {np.mean(mae_scores):.4f} (+- {np.std(mae_scores):.4f})")
 

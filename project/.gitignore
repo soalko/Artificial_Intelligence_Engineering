@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+models/*.pkl
+models/*.joblib
+*.log
+.DS_Store
+data/raw/demand_forecasting.csv
+
+

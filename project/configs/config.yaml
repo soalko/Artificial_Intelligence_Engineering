@@ -1,0 +1,49 @@
+data:
+  raw_path: "data/raw/demand_forecasting.csv"
+  processed_path: "data/processed/demand_forecast_processed.csv"
+  target_col: "Units Sold"
+  date_col: "Date"
+  store_col: "Store ID"
+  item_col: "Product ID"
+  category_col: "Category"
+  region_col: "Region"
+  weather_col: "Weather Condition"
+  promotion_col: "Promotion"
+  competitor_pricing_col: "Competitor Pricing"
+  seasonality_col: "Seasonality"
+  epidemic_col: "Epidemic"
+  inventory_col: "Inventory Level"
+
+preprocessing:
+  fill_na_strategy: "ffill"
+  drop_cols: []
+  train_split_ratio: 0.8
+  val_split_ratio: 0.1
+  test_split_ratio: 0.1
+
+features:
+  date_features: ["year", "month", "day", "dayofweek", "weekend", "quarter"]
+  lags: [1, 2, 3, 7, 14, 28]
+  rolling_windows: [7, 14, 30]
+  group_agg_means: ["Price", "Inventory Level"]
+
+model:
+  name: "xgboost"
+  params:
+    n_estimators: 200
+    max_depth: 7
+    learning_rate: 0.05
+    subsample: 0.8
+    colsample_bytree: 0.8
+    reg_alpha: 0.1
+    reg_lambda: 1.0
+    random_state: 42
+
+training:
+  num_folds: 5
+  early_stopping_rounds: 20
+  eval_metric: "mae"
+
+inference:
+  model_path: "artifacts/xgboost_model.pkl"
+  preprocessor_path: "artifacts/preprocessor.pkl"

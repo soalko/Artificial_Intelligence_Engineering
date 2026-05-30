@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  demand-api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/app/project/artifacts
+      - ./data:/app/project/data
+    environment:
+      - PYTHONPATH=/app

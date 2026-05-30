@@ -1,0 +1,14 @@
+{
+  "cv_mae_mean": 0.6083497822284698,
+  "cv_mae_std": 0.18099375346972596,
+  "model_params": {
+    "n_estimators": 200,
+    "max_depth": 7,
+    "learning_rate": 0.05,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "reg_alpha": 0.1,
+    "reg_lambda": 1.0,
+    "random_state": 42
+  }
+}
